@@ -1,0 +1,228 @@
+/* ==========================================================================
+   LifePulse — css/layout.css
+   Clean iPhone 15 Pro Frame on Desktop & Fullscreen Native on Real iPhone
+   ========================================================================== */
+
+.workspace-bar {
+  max-width: 680px;
+  margin: 18px auto 14px;
+  padding: 8px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.workspace-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.workspace-brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.workspace-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.seg-group {
+  display: inline-flex;
+  background: var(--bg-subtle);
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.seg-btn {
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-sec);
+  border-radius: 7px;
+  transition: all 0.15s ease;
+}
+
+.seg-btn.active {
+  background: var(--bg-card);
+  color: var(--text-main);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.bar-btn {
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-sec);
+  background: var(--bg-subtle);
+  border-radius: 9px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.bar-btn:hover {
+  color: var(--text-main);
+  background: var(--bg-card-hover);
+}
+
+/* iPhone 15 Pro Viewport Container (393 x 852 pt) */
+.stage-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 36px;
+}
+
+.iphone-15-pro {
+  width: 393px;
+  height: 852px;
+  background: var(--bg-app);
+  border-radius: 48px;
+  border: 8px solid #22252C;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+[data-theme="light"] .iphone-15-pro {
+  border-color: #D5D8E0;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Minimal Status Bar & Dynamic Island */
+.ios-status-bar {
+  height: 48px;
+  padding: 12px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.dynamic-island {
+  width: 112px;
+  height: 28px;
+  background: #000;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #EAECEF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Scrollable Screen Content */
+.screen-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px 20px 100px;
+  scrollbar-width: none;
+}
+
+.screen-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Minimalist Bottom Tab Bar */
+.ios-tabbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  padding: 6px 12px 18px;
+  background: var(--bg-nav);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  z-index: 20;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.tab-item svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8;
+}
+
+.tab-item.active {
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   Real iPhone 15 Pro Native Fullscreen Mode (Mobile Safari & Installed PWA)
+   ========================================================================== */
+@media (max-width: 520px), (display-mode: standalone) {
+  html, body {
+    background: var(--bg-app);
+    height: 100%;
+  }
+
+  .workspace-bar {
+    display: none;
+  }
+
+  .stage-wrap {
+    padding: 0;
+    min-height: 100dvh;
+  }
+
+  .iphone-15-pro {
+    width: 100%;
+    height: 100dvh;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .ios-status-bar {
+    display: none;
+  }
+
+  .screen-scroll {
+    padding-top: calc(env(safe-area-inset-top, 16px) + 12px);
+    padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 84px);
+  }
+
+  .ios-tabbar {
+    position: fixed;
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+}

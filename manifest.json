@@ -1,0 +1,25 @@
+{
+  "name": "LifePulse — Дашборд для iPhone 15 Pro",
+  "short_name": "LifePulse",
+  "description": "Персональный iOS-дашборд: расписание, фокус на задачах, цели на день, финансы, копилка и живые виджеты.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090A10",
+  "theme_color": "#090A10",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
