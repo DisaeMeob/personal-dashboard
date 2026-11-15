@@ -1,0 +1,90 @@
+/* ==========================================================================
+   LifePulse — css/theme.css
+   Minimalist Calm Design System (Things 3 / Linear / Apple Health inspired)
+   ========================================================================== */
+
+:root,
+[data-theme="dark"] {
+  --bg-page: #0B0C0E;
+  --bg-app: #101216;
+  --bg-card: #171A20;
+  --bg-card-hover: #1C2027;
+  --bg-subtle: #20242D;
+  --bg-nav: rgba(23, 26, 32, 0.88);
+
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.11);
+
+  --text-main: #F1F3F6;
+  --text-sec: #8D94A2;
+  --text-muted: #5B6270;
+
+  /* Soft, eye-friendly accents (no harsh neon) */
+  --accent: #5B8AF0;
+  --accent-soft: rgba(91, 138, 240, 0.14);
+  --green: #38B27A;
+  --green-soft: rgba(56, 178, 122, 0.14);
+  --coral: #E06C60;
+  --coral-soft: rgba(224, 108, 96, 0.14);
+  --amber: #D99B4E;
+  --amber-soft: rgba(217, 155, 78, 0.14);
+
+  --track: rgba(255, 255, 255, 0.07);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] {
+  --bg-page: #ECEEF2;
+  --bg-app: #F6F7F9;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F2F4F8;
+  --bg-subtle: #EFF1F5;
+  --bg-nav: rgba(255, 255, 255, 0.9);
+
+  --border: rgba(0, 0, 0, 0.06);
+  --border-strong: rgba(0, 0, 0, 0.11);
+
+  --text-main: #15171C;
+  --text-sec: #646B78;
+  --text-muted: #98A0AE;
+
+  --accent: #3D6FE0;
+  --accent-soft: rgba(61, 111, 224, 0.1);
+  --green: #269B66;
+  --green-soft: rgba(38, 155, 102, 0.1);
+  --coral: #D6574B;
+  --coral-soft: rgba(214, 87, 75, 0.1);
+  --amber: #C88736;
+  --amber-soft: rgba(200, 135, 54, 0.1);
+
+  --track: rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}

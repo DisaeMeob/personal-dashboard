@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>LifePulse — Личный дашборд</title>
+
+  <!-- iOS 18 / iPhone 15 Pro Native Standalone PWA Meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LifePulse" />
+  <meta name="theme-color" content="#101216" />
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/icon.svg" />
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- Desktop Preview Toolbar (Automatically hidden on real iPhone 15 Pro) -->
+  <header class="workspace-bar">
+    <div class="workspace-brand">
+      <span class="workspace-brand-dot"></span>
+      <span>LifePulse · iPhone 15 Pro</span>
+    </div>
+    <div class="workspace-actions">
+      <div class="seg-group">
+        <button id="btnModeApp" class="seg-btn active" onclick="LP.app.setDisplayMode('app')">Приложение</button>
+        <button id="btnModeWidgets" class="seg-btn" onclick="LP.app.setDisplayMode('widgets')">Виджеты iOS</button>
+      </div>
+      <button class="bar-btn" onclick="LP.app.toggleTheme()">Тема</button>
+      <button class="bar-btn" onclick="LP.app.toggleInstallModal(true)">📲 На iPhone 15 Pro</button>
+      <button class="bar-btn" onclick="LP.app.resetAllData()" title="Сбросить демо-данные">Сброс</button>
+    </div>
+  </header>
+
+  <!-- iPhone 15 Pro Viewport (Edge-to-Edge on actual iPhone, Framed on Mac) -->
+  <main class="stage-wrap">
+    <div class="iphone-15-pro">
+
+      <!-- Status Bar & Dynamic Island (Desktop Preview) -->
+      <div class="ios-status-bar">
+        <span>09:41</span>
+        <div class="dynamic-island">
+          <span id="dynamicIslandText">LifePulse</span>
+        </div>
+        <span>5G · 100%</span>
+      </div>
+
+      <!-- Dynamic Screen Content -->
+      <div id="screenContent" class="screen-scroll"></div>
+
+      <!-- Minimalist Bottom Tab Bar -->
+      <nav class="ios-tabbar">
+        <button class="tab-item active" data-tab="overview" onclick="LP.app.switchTab('overview')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+          <span>Обзор</span>
+        </button>
+
+        <button class="tab-item" data-tab="schedule" onclick="LP.app.switchTab('schedule')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Расписание</span>
+        </button>
+
+        <button class="tab-item" data-tab="focus" onclick="LP.app.switchTab('focus')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <polyline points="12 7 12 12 15 15"></polyline>
+          </svg>
+          <span>Фокус</span>
+        </button>
+
+        <button class="tab-item" data-tab="finance" onclick="LP.app.switchTab('finance')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+          </svg>
+          <span>Финансы</span>
+        </button>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- Modal: How to Install on iPhone 15 Pro -->
+  <div id="installModal" class="modal-backdrop" style="display:none;" onclick="if(event.target===this)LP.app.toggleInstallModal(false)">
+    <div class="modal-card">
+      <div class="card-head">
+        <span style="font-size:16px;font-weight:700;">Установка на iPhone 15 Pro</span>
+        <button class="del-btn" onclick="LP.app.toggleInstallModal(false)">✕</button>
+      </div>
+      <div style="font-size:13px;color:var(--text-sec);line-height:1.55;display:flex;flex-direction:column;gap:10px;">
+        <div>
+          <strong style="color:var(--text-main);">Способ 1. Установка PWA через Safari (без Xcode):</strong><br/>
+          1. Открой в <strong>Safari</strong> на iPhone адрес:<br/>
+          <code style="display:inline-block;margin-top:4px;padding:4px 8px;background:var(--bg-subtle);border-radius:6px;color:var(--accent);font-weight:600;">https://disaemeob.github.io/personal-dashboard/</code><br/>
+          2. Нажми кнопку <strong>«Поделиться»</strong> (квадрат со стрелкой вверх) → <strong>«На экран „Домой“»</strong>.<br/>
+          Приложение установится с иконкой, будет открываться на весь экран iPhone 15 Pro и работать полностью офлайн!
+        </div>
+        <div style="padding-top:8px;border-top:1px solid var(--border);">
+          <strong style="color:var(--text-main);">Способ 2. Нативная сборка с WidgetKit через Xcode:</strong><br/>
+          Открой папку <code>ios/</code> в Xcode, подключи iPhone 15 Pro по кабелю, выбери свой Apple ID в <em>Signing & Capabilities</em> и нажми <strong>Run (⌘R)</strong>.
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:14px;" onclick="LP.app.toggleInstallModal(false)">Понятно</button>
+    </div>
+  </div>
+
+  <!-- Modular Application Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
